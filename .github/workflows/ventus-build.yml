@@ -22,23 +22,6 @@ jobs:
     - name: Checkout LLVM
       uses: actions/checkout@v3
 
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-        registry-url: 'https://registry.npmjs.org'
-
-
-    - name: Install Ninja
-      uses: llvm/actions/install-ninja@main
-
-    - name: Install Other needed packages # maybe install llvm release is a better choice
-      run: |
-        sudo apt-get install -y \
-        device-tree-compiler \
-        bsdmainutils \
-        ccache
-
     - name: Clone needed packages
       run: |
         git clone https://github.com/THU-DSP-LAB/pocl.git  ${{github.workspace}}/../$POCL

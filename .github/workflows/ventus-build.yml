@@ -29,31 +29,31 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: THU-DSP-LAB/pocl
-        path: $POCL
+        path: ${{POCL}}
 
     - name: checkout ocl-icd
       uses: actions/checkout@v4
       with:
         repository: OCL-dev/ocl-icd
-        path: $OCL_ICD
+        path: ${{OCL_ICD}}
 
     - name: checkout isa
       uses: actions/checkout@v4
       with:
         repository: THU-DSP-LAB/ventus-gpgpu-isa-simulator
-        path: $ISA_SIMULATOR
+        path: ${{ISA_SIMULATOR}}
 
     - name: checkout driver
       uses: actions/checkout@v4
       with:
         repository: THU-DSP-LAB/ventus-driver
-        path: $VENTUS_DRIVER
+        path: ${{VENTUS_DRIVER}}
 
     - name: checkout rodinia
       uses: actions/checkout@v4
       with:
         repository: Jules-Kong/gpu-rodinia
-        path: $RODINIA
+        path: ${{RODINIA}}
 
     - name: Clone needed packages
       run: |

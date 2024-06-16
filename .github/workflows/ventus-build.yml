@@ -29,42 +29,37 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: THU-DSP-LAB/pocl
-        path: ${{POCL}}
+        path: pocl
 
     - name: checkout ocl-icd
       uses: actions/checkout@v4
       with:
         repository: OCL-dev/ocl-icd
-        path: ${{OCL_ICD}}
+        path: ocl-icd
 
     - name: checkout isa
       uses: actions/checkout@v4
       with:
         repository: THU-DSP-LAB/ventus-gpgpu-isa-simulator
-        path: ${{ISA_SIMULATOR}}
+        path: ventus-gpgpu-isa-simulator
 
     - name: checkout driver
       uses: actions/checkout@v4
       with:
         repository: THU-DSP-LAB/ventus-driver
-        path: ${{VENTUS_DRIVER}}
+        path: ventus-driver
 
     - name: checkout rodinia
       uses: actions/checkout@v4
       with:
         repository: Jules-Kong/gpu-rodinia
-        path: ${{RODINIA}}
+        path: gpu-rodinia
 
     - name: Clone needed packages
       run: |
         export DRIVER_DIR=${{github.workspace}}/$VENTUS_DRIVER
         export DRIVER_BUILD_DIR=${DRIVER_DIR}/build
         export VENTUS_INSTALL_PREFIX=${{github.workspace}}/llvm-project/install
-        wget -P ${{github.workspace}}/$RODINIA -c https://www.dropbox.com/s/cc6cozpboht3mtu/rodinia-3.1-data.tar.gz
-        tar -zxvf ${{github.workspace}}/$RODINIA/rodinia-3.1-data.tar.gz -C ${{github.workspace}}/$RODINIA
-        mv ${{github.workspace}}/$RODINIA/rodinia-data/* ${{github.workspace}}/$RODINIA/data/
-        rm ${{github.workspace}}/$RODINIA/rodinia-3.1-data.tar.gz
-        rm ${{github.workspace}}/$RODINIA/rodinia-data -rf
 
     - name: cd
       shell: bash

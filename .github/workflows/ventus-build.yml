@@ -35,7 +35,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: OCL-dev/ocl-icd
-        path: ../$OCL_ICD
+        path: $OCL_ICD
 
     - name: checkout isa
       uses: actions/checkout@v4

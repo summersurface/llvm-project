@@ -22,13 +22,38 @@ jobs:
     - name: Checkout LLVM
       uses: actions/checkout@v3
 
+    - name: checkout pocl
+      uses: actions/checkout@v4
+      with:
+        repository: THU-DSP-LAB/pocl
+        path: ../$POCL
+
+    - name: checkout ocl-icd
+      uses: actions/checkout@v4
+      with:
+        repository: OCL-dev/ocl-icd
+        path: ../$OCL_ICD
+
+    - name: checkout isa
+      uses: actions/checkout@v4
+      with:
+        repository: THU-DSP-LAB/ventus-gpgpu-isa-simulator
+        path: ../$ISA_SIMULATOR
+
+    - name: checkout driver
+      uses: actions/checkout@v4
+      with:
+        repository: THU-DSP-LAB/ventus-driver
+        path: ../$VENTUS_DRIVER
+
+    - name: checkout rodinia
+      uses: actions/checkout@v4
+      with:
+        repository: Jules-Kong/gpu-rodinia
+        path: ../$RODINIA
+
     - name: Clone needed packages
       run: |
-        git clone https://github.com/THU-DSP-LAB/pocl.git  ${{github.workspace}}/../$POCL
-        git clone https://github.com/OCL-dev/ocl-icd.git ${{github.workspace}}/../$OCL_ICD
-        git clone https://github.com/THU-DSP-LAB/ventus-gpgpu-isa-simulator.git ${{github.workspace}}/../$ISA_SIMULATOR
-        git clone https://github.com/THU-DSP-LAB/ventus-driver.git ${{github.workspace}}/../$VENTUS_DRIVER
-        git clone https://github.com/Jules-Kong/gpu-rodinia.git ${{github.workspace}}/../$RODINIA
         export DRIVER_DIR=${{github.workspace}}/../$VENTUS_DRIVER
         export DRIVER_BUILD_DIR=${DRIVER_DIR}/build
         export VENTUS_INSTALL_PREFIX=${{github.workspace}}/install

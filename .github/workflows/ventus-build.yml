@@ -61,49 +61,52 @@ jobs:
         export DRIVER_BUILD_DIR=${DRIVER_DIR}/build
         export VENTUS_INSTALL_PREFIX=${{github.workspace}}/llvm-project/install
 
-    - name: cd
-      shell: bash
-      run: |
-        cd llvm-project
-
     - name: Start building llvm-ventus
       shell: bash
       run: |
+        cd llvm-project
         bash build-ventus.sh --build llvm
 
     - name: Start building ocl-icd
       shell: bash
       run: |
+        cd llvm-project
         bash build-ventus.sh --build ${OCL_ICD}
 
     - name: Start building libclc
       shell: bash
       run: |
+        cd llvm-project
         bash build-ventus.sh --build libclc
 
     - name: Start building spike
       shell: bash
       run: |
+        cd llvm-project
         bash build-ventus.sh --build spike
 
     - name: Start building driver
       shell: bash
       run: |
+        cd llvm-project
         bash build-ventus.sh --build driver
 
     - name: Start building pocl
       shell: bash
       run: |
+        cd llvm-project
         bash build-ventus.sh --build ${POCL}
 
     - name: Start testing gpu-rodinia
       shell: bash
       run: |
+        cd llvm-project
          bash build-ventus.sh --build rodinia
 
     - name: Start testing pocl
       shell: bash
       run: |
+        cd llvm-project
          bash build-ventus.sh --build test-pocl
 
     - name: Start ISA simulation test
